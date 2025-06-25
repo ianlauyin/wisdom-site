@@ -7,18 +7,20 @@
   </head>
   <style>
     body {
-      width: 100vw;
       height: 100vh;
-      margin: 0;
       display: flex;
       align-items: center;
+      justify-content: center;
+      margin: 0;
     }
     img {
+      height: 100%;
       width: 100%;
+      object-fit: contain;
+      display: block;
     }
   </style>
   <body>
-    <div id="img-container"></div>
     <script>
       const colors = [
         "#F5F3F6",
@@ -36,7 +38,7 @@
       document.body.style.backgroundColor = colors[randomNumber];
       let img = document.createElement("img");
       img.src = `assets/${randomNumber}.png`;
-      document.getElementById("img-container").appendChild(img);
+      document.body.appendChild(img);
     </script>
   </body>
 </html>
