@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wisdom-Site</title>
+    <title>指導鼓勵</title>
   </head>
   <style>
     body {
@@ -15,29 +15,28 @@
     }
     img {
       width: 100%;
-      object-fit: cover;
     }
   </style>
   <body>
+    <div id="img-container"></div>
     <script>
       const colors = [
         "#F5F3F6",
         "#FEFDF9",
         "#DDDED8",
         "#F1EEE7",
-        "#D4C7C1",
+        "#E6E5E3",
         "#F7F6F2",
         "#F8F4F5",
         "#FFF9F1",
-        "#FEEFAC",
+        "#FEF3DD",
         "#F5EEDE",
       ];
       const randomNumber = Math.floor(Math.random() * 10);
-
       document.body.style.backgroundColor = colors[randomNumber];
       let img = document.createElement("img");
       img.src = `assets/${randomNumber}.png`;
-      document.body.appendChild(img);
+      document.getElementById("img-container").appendChild(img);
     </script>
   </body>
 </html>
