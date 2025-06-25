@@ -4,90 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wisdom-Site</title>
-    <style>
-      #quoteList {
-        list-style-type: square;
-        padding-left: 20px;
-        color: #333;
-
-        > li:last-child {
-          padding-top: 10px;
-        }
-      }
-    </style>
   </head>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  </style>
   <body>
-    <ul id="quoteList"></ul>
     <script>
-      const quote1 = [
-        "佛並非沒有任何煩惱，相反佛甚至有很多煩惱。如何才能讓全世界一切眾生幸福？如何建立和平的社會？為此不斷煩惱的就是佛。所以煩惱多反而好。因為這樣的人能成佛。",
-        "稍微祈求就立刻好轉的話，信心既不會加深，也無法做好真正的人間革命或宿命轉換。御本尊刻意讓我們吃苦—能這麼領悟，發自感謝去祈求的話，就是在實踐人間革命的佐證。",
-        "《創造幸福與和平的智慧 第二部 下》",
+      const colors = [
+        "#F5F3F6",
+        "#FEFDF9",
+        "#DDDED8",
+        "#F1EEE7",
+        "#D4C7C1",
+        "#F7F6F2",
+        "#F8F4F5",
+        "#FFF9F1",
+        "#FEEFAC",
+        "#F5EEDE",
       ];
-      const quote2 = [
-        "青春是辛苦的，充滿了苦惱，但因為有煩惱，才能鍛鍊心志。也因為度過了充滿苦惱、或認為最不幸的日子，日後回想起來，才會了解到其實是一段多麼珍貴的歲月。",
-        "《創造幸福與和平的智慧》第二部（下）",
-      ];
-      const quote3 = [
-        "對信仰正確佛法的人而言，所謂「敗北」，不是指遇到苦難，而是指不敢挑戰苦難。如果逃避挑戰，苦難就真的會成為宿命。「沒有比艱難的時刻更能轉換宿命」、「痛苦的時候才能人間革命」、「不論遇到任何困難，最後必能克服」秉持這種大確信奮鬥到底，才是日蓮佛法的信心。",
-        "《開目抄講義（下）》",
-      ];
-      const quote4 = [
-        "任何問題，絕對沒有像變魔術般能馬上迎刃而解的方法。只有努力祈求，歷盡艱苦，把問題一個又一個去解決，除此之外，便沒有其他方法。到了最後，一切都會變成大善，所有問題都會得到解決。這就是「絕對勝利的信心」。",
-        "《御書與青年》",
-      ];
-      const quote5 = [
-        "「心唯貴耳」",
-        "·「心」怎樣去想，將決定一切勝負",
-        "·「憑心中的一念」就能體會改變自己，改變四周，改變社會的一念三千的秘術。",
-        "·心的變革能改變自己、改變環境，進而改變世界",
-        "·「心改變，一切隨之改變」，這是人生的不可思議，也是千真萬確的事實。",
-        "《創造幸福與和平的智慧》",
-      ];
-      const quote6 = [
-        "只要出生在這世上，就一定會有非你莫屬的使命；否則，就不可能降臨在這世上。宇宙絕無絲毫多餘的份兒，準有什麼意義。被人稱為「雜草」的植物，也有其價值。",
-        "《青春對話》",
-      ];
-      const quote7 = [
-        "「謝謝」是非暴力的精髓，當中包含了對他人的尊敬，表露謙遜的態度，以及對人生最大的肯定。",
-        "《創造幸福與和平的智慧》",
-      ];
-      const quote8 = [
-        "世界並不是在遠方，就在自己的跟前。因此，在自己所在的地方取勝就是勝利。因此，今天的勝利會累積起永遠的勝利。決不可於青春時代留下懊悔。我們絕對不可以度過敗北的人生。 ",
-        "《隨筆 人道世紀之光》",
-      ];
-      const quote9 = [
-        "聽朋友傾訴煩惱，可能會有不知怎樣應對的一刻。這時候，就和他一起煩惱，一起祈求。有時只要聆聽，就能讓朋友放鬆心情。「對於這個問題，我是這麼想」— 只說出自己的想法也可以。即使不長篇大論地申述道理，對方也能感受到那份鼓勵的心意。此外，一起去找值得信賴的前輩傾談也是個好方法。只要有關懷對方的慈悲心，智慧就會淡源不絕地湧現。",
-        "《勝利的人學》",
-      ];
-      const quote10 = [
-        "池田先生說：「或許因為現今信息氾濫，所以顧慮太多，令人不敢邁出一步。不過，無論甚麼事， 沒有試過是不會知道結果的。」在我的青春時代，有一位我尊敬的前輩曾鼓勵我說：「池田君，無論遇到任何事，青春就是要以「破釜沈舟」的勇氣去行動啊！ ",
-        "我直至在仍會想起這句話。",
-        "就算你們當中有人缺乏自信，但我相信大家，相信大家的無限可能性，相信大家的無敵勇氣。與其找「做不到」的理由，倒不如下定「做得到」的決心，好好努力。",
-        "雖然困難重重，但「完成了」的時候的喜悅非比尋常。就算結果不如願，但所付出的努力日後必會得到發揮，由此絕對能開闢新的希望之道。",
-        "《節錄 — 黎明聖報VOL.2522》",
-      ];
-      const quoteLists = [
-        quote1,
-        quote2,
-        quote3,
-        quote4,
-        quote5,
-        quote6,
-        quote7,
-        quote8,
-        quote9,
-        quote10,
-      ];
+      const randomNumber = Math.floor(Math.random() * 10);
 
-      const quoteList = document.querySelector("#quoteList");
-      const randomQuote =
-        quoteLists[Math.floor(Math.random() * quoteLists.length)];
-      randomQuote.forEach((quote) => {
-        const li = document.createElement("li");
-        li.textContent = quote;
-        quoteList.appendChild(li);
-      });
+      document.body.style.backgroundColor = colors[randomNumber];
+      let img = document.createElement("img");
+      img.src = `assets/${randomNumber}.png`;
+      document.body.appendChild(img);
     </script>
   </body>
 </html>
